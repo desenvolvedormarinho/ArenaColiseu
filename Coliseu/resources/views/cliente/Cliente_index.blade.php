@@ -9,6 +9,7 @@
     </head>
 
         <body>
+            <a href="{{route('MainPage')}}">Pagina principal</a>
             <a href="{{route('Cliente_add')}}">Adicionar</a>
             @foreach ($Cliente as $Cliente)
                 <h1>{{$Cliente->nome}}</h1>

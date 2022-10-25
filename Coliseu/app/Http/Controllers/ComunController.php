@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campos;
 use Illuminate\Http\Request;
 
-class CampoController extends Controller
+
+class ComunController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class CampoController extends Controller
      */
     public function index()
     {
-        $Campo = Campos::all();
-        return view('campo/Campo_index', ['Campo'=>$Campo]);
+        return view('comun/mainPage');
+        
     }
 
     /**
@@ -25,7 +25,7 @@ class CampoController extends Controller
      */
     public function create()
     {
-        return view('campo/Campo_add');
+        //
     }
 
     /**
@@ -36,8 +36,7 @@ class CampoController extends Controller
      */
     public function store(Request $request)
     {
-        Campos::create($request->all());
-        return redirect('Campo_index');
+        //
     }
 
     /**
@@ -48,8 +47,7 @@ class CampoController extends Controller
      */
     public function show($id)
     {
-        $Campo = Campos::findOrFail($id);
-        return view('campo/Campo_show', ['Campo'=>$Campo]);
+        //
     }
 
     /**
@@ -60,8 +58,7 @@ class CampoController extends Controller
      */
     public function edit($id)
     {
-        $Campo = Campos::findorfail($id);
-        return view('campo/Campo_edit', ['Campo'=>$Campo]);
+        //
     }
 
     /**
@@ -73,9 +70,7 @@ class CampoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $Campo = Campos::findorfail($id);
-        $Campo->update($request->all());
-        return redirect('campo/Campo_index');
+        //
     }
 
     /**
@@ -86,7 +81,6 @@ class CampoController extends Controller
      */
     public function destroy($id)
     {
-        Campos::destroy($id);
-        return redirect('campo/Campo_index');
+        //
     }
 }

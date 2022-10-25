@@ -15,7 +15,7 @@ class ClienteController extends Controller
     public function index()
     {
         $Cliente = Cliente::all();
-        return view('Cliente_index', ['Cliente'=>$Cliente]);
+        return view('cliente/Cliente_index', ['Cliente'=>$Cliente]);
     }
 
     /**
@@ -25,7 +25,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('Cliente_add');
+        return view('cliente/Cliente_add');
     }
 
     /**
@@ -37,7 +37,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         Cliente::create($request->all());
-        return redirect('/');
+        return redirect('cliente/Cliente_index');
     }
 
     /**
@@ -49,7 +49,7 @@ class ClienteController extends Controller
     public function show($id)
     {
         $Cliente = Cliente::findOrFail($id);
-        return view('Cliente_show', ['Cliente'=>$Cliente]);
+        return view('cliente/Cliente_show', ['Cliente'=>$Cliente]);
     }
 
     /**
@@ -61,7 +61,7 @@ class ClienteController extends Controller
     public function edit($id)
     {
         $Cliente = Cliente::findOrFail($id);
-        return view('Cliente_edit', ['Cliente'=>$Cliente]);
+        return view('cliente/Cliente_edit', ['Cliente'=>$Cliente]);
     }
 
     /**
@@ -75,7 +75,7 @@ class ClienteController extends Controller
     {
         $Cliente = Cliente::findOrFail($id);
         $Cliente->update($request->all());
-        return redirect('/');
+        return redirect('cliente/Client_index');
     }
 
     /**
@@ -87,6 +87,6 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         Cliente::destroy($id);
-        return redirect('/');
+        return redirect('cliente/Cliente_index');
     }
 }

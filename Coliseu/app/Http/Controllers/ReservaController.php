@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reserva;
 use Illuminate\Http\Request;
 
 class ReservaController extends Controller
@@ -13,7 +14,8 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        $Reserva = Reserva::all();
+        return view('reserva/Reserva_index', ['Reserva'=>$Reserva]);
     }
 
     /**
@@ -23,7 +25,7 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+        return view('reserva/Reserva_add');
     }
 
     /**
@@ -34,7 +36,8 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Reserva::create($request->all());
+        return redirect('reserva/Reserva_index');
     }
 
     /**
@@ -45,7 +48,8 @@ class ReservaController extends Controller
      */
     public function show($id)
     {
-        //
+        $Reserva = Reserva::findOrFail($id);
+        return view('reserva/Reserva_show', ['Reserva'=>$Reserva]);
     }
 
     /**
@@ -56,7 +60,8 @@ class ReservaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Reserva = Reserva::findOrFail($id);
+        return view('reserva/Reserva_edit', ['Reserva'=>$Reserva]);
     }
 
     /**
@@ -68,7 +73,9 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Reserva = Reserva::findorfail($id);
+        $Reserva->update($request->all());
+        return redirect('reserva/Reserva_index');
     }
 
     /**
@@ -79,6 +86,7 @@ class ReservaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Reserva::destroy($id);
+        return redirect('reserva/Reserva_index');
     }
 }
